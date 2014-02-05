@@ -19,10 +19,8 @@ public class Translator {
     private ArrayList<Instruction> program; // The program to be created
     private final String fileName; // source file of SML code
 
-    private static final String SRC = "src";
-
     public Translator(final String fileName) {
-        this.fileName = SRC + "/" + fileName;
+        this.fileName = fileName;
     }
 
     // translate the small program in the file into lab (the labels) and
