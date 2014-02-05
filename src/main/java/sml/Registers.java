@@ -1,4 +1,4 @@
-package sml;
+package main.java.sml;
 
 import lombok.Data;
 
