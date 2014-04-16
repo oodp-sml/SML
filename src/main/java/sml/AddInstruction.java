@@ -1,4 +1,4 @@
-package main.java.sml;
+package sml;
 
 /**
  * This class ....
