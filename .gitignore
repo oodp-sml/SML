@@ -1,7 +1,14 @@
 *.class
 
+
+*.classpath
+
 # Package Files #
+
 *.jar
+
 *.war
+
 *.ear
+
 /target
