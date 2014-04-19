@@ -1,4 +1,4 @@
-package main.java.sml;
+package sml;
 
 import java.util.ArrayList;
 

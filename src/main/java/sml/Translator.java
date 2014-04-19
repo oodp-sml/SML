@@ -1,4 +1,4 @@
-package main.java.sml;
+package sml;
 
 import java.io.File;
 import java.io.IOException;
@@ -87,6 +87,11 @@ public class Translator {
             s1 = scanInt();
             s2 = scanInt();
             return new AddInstruction(label, r, s1, s2);
+        case "sub":
+            r = scanInt();
+            s1 = scanInt();
+            s2 = scanInt();
+            return new SubInstruction(label, r, s1, s2);
         case "lin":
             r = scanInt();
             s1 = scanInt();

@@ -12,3 +12,7 @@
 *.ear
 
 /target
+
+# IntelliJ Files
+*.iml
+.idea

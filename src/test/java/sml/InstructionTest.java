@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
-import main.java.sml.Machine;
-import main.java.sml.Translator;
+import sml.Machine;
+import sml.Translator;
 
 import org.junit.Test;
 
