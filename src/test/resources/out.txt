@@ -1,0 +1,4 @@
+f0 lin 1 6
+f1 lin 2 2
+f2 out 1
+f3 out 2
