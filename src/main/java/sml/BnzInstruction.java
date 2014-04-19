@@ -9,10 +9,10 @@ public class BnzInstruction extends Instruction {
         super(label, op);
     }
 
-    public BnzInstruction(final String label, final int op1, final String targetLabel) {
+    public BnzInstruction(String label, Translator translator) {
         this(label, "bnz");
-        this.op1 = op1;
-        this.targetLabel = targetLabel;
+        this.op1 = translator.scanInt();
+        this.targetLabel = translator.scan();
     }
 
     @Override

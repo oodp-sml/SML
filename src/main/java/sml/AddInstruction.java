@@ -15,12 +15,12 @@ public class AddInstruction extends Instruction {
     public AddInstruction(final String label, final String op) {
         super(label, op);
     }
-
-    public AddInstruction(final String label, final int result, final int op1, final int op2) {
+    
+    public AddInstruction(String label, Translator translator) {
         this(label, "add");
-        this.result = result;
-        this.op1 = op1;
-        this.op2 = op2;
+        this.result = translator.scanInt();
+        this.op1 = translator.scanInt();
+        this.op2 = translator.scanInt();
     }
 
     @Override

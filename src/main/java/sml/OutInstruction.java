@@ -8,9 +8,9 @@ public class OutInstruction extends Instruction {
         super(label, op);
     }
 
-    public OutInstruction(final String label, final int op1) {
+    public OutInstruction(String label, Translator translator) {
         this(label, "out");
-        this.op1 = op1;
+        this.op1 = translator.scanInt();
     }
 
     @Override

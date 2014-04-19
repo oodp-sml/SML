@@ -14,6 +14,7 @@ import sml.Machine;
 import sml.Translator;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class InstructionTest {

@@ -10,11 +10,11 @@ public class DivInstruction extends Instruction {
         super(label, op);
     }
 
-    public DivInstruction(final String label, final int result, final int op1, final int op2) {
+    public DivInstruction(String label, Translator translator) {
         this(label, "div");
-        this.result = result;
-        this.op1 = op1;
-        this.op2 = op2;
+        this.result = translator.scanInt();
+        this.op1 = translator.scanInt();
+        this.op2 = translator.scanInt();
     }
 
     @Override
