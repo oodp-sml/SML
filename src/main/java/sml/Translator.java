@@ -2,8 +2,11 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.Properties;
 import java.util.Scanner;
 
 /*
@@ -18,9 +21,17 @@ public class Translator {
     private Labels labels; // The labels of the program being translated
     private ArrayList<Instruction> program; // The program to be created
     private final String fileName; // source file of SML code
+    Properties properties;
 
     public Translator(final String fileName) {
         this.fileName = fileName;
+        try {
+            properties = new Properties();
+            InputStream inputStream = getClass().getResourceAsStream("/sml.properties");
+            properties.load(inputStream);
+        } catch(IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // translate the small program in the file into lab (the labels) and
@@ -71,36 +82,21 @@ public class Translator {
     // removed. Translate line into an instruction with label label
     // and return the instruction
     public Instruction getInstruction(final String label) {
-        int s1; // Possible operands of the instruction
-        int s2;
-        int r;
-        final int x;
-
         if (line.equals("")) {
             return null;
         }
 
         final String ins = scan();
-        switch (ins) {
-        case "add":
-            r = scanInt();
-            s1 = scanInt();
-            s2 = scanInt();
-            return new AddInstruction(label, r, s1, s2);
-        case "sub":
-            r = scanInt();
-            s1 = scanInt();
-            s2 = scanInt();
-            return new SubInstruction(label, r, s1, s2);
-        case "lin":
-            r = scanInt();
-            s1 = scanInt();
-            return new LinInstruction(label, r, s1);
+        
+        try {
+            String className = properties.getProperty(ins);
+            Class c = Class.forName(className);
+            Constructor cons = c.getConstructor(new Class[] {String.class, Translator.class});
+            return (Instruction)cons.newInstance(new Object[] {label, this});
+        } catch(Exception e) {
+            throw new RuntimeException(e);
         }
-
-        // You will have to write code here for the other instructions.
-
-        return null;
+        
     }
 
     /*

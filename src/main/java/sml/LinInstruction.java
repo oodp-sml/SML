@@ -1,5 +1,7 @@
 package sml;
 
+import sml.Translator;
+
 /**
  * This class ....
  * 
@@ -13,12 +15,11 @@ public class LinInstruction extends Instruction {
     public LinInstruction(final String label, final String opcode) {
         super(label, opcode);
     }
-
-    public LinInstruction(final String label, final int register, final int value) {
+    
+    public LinInstruction(String label, Translator translator) {
         super(label, "lin");
-        this.register = register;
-        this.value = value;
-
+        this.register = translator.scanInt();
+        this.value = translator.scanInt();
     }
 
     @Override

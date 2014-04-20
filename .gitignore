@@ -1,10 +1,12 @@
 *.class
-.classpath
+*.classpath
+*.project
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
 /target
 
 # IntelliJ Files

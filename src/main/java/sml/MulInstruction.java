@@ -1,23 +1,17 @@
 package sml;
 
-/**
- * This class ....
- *
- * @author someone
- */
-
-public class SubInstruction extends Instruction {
+public class MulInstruction extends Instruction {
 
     private int result;
     private int op1;
     private int op2;
 
-    public SubInstruction(final String label, final String op) {
+    public MulInstruction(final String label, final String op) {
         super(label, op);
     }
 
-    public SubInstruction(String label, Translator translator) {
-        this(label, "sub");
+    public MulInstruction(String label, Translator translator) {
+        this(label, "mul");
         this.result = translator.scanInt();
         this.op1 = translator.scanInt();
         this.op2 = translator.scanInt();
@@ -27,11 +21,11 @@ public class SubInstruction extends Instruction {
     public void execute(final Machine m) {
         final int value1 = m.getRegisters().getRegister(op1);
         final int value2 = m.getRegisters().getRegister(op2);
-        m.getRegisters().setRegister(result, value1 - value2);
+        m.getRegisters().setRegister(result, value1 * value2);
     }
 
     @Override
     public String toString() {
-        return super.toString() + " " + op1 + " - " + op2 + " to " + result;
+        return super.toString() + " " + op1 + " * " + op2 + " to " + result;
     }
 }
